@@ -10,6 +10,7 @@ using AutoMapper;
 using CoreWiki.Application.Articles.Reading.Commands;
 using CoreWiki.Application.Articles.Reading.Queries;
 using CoreWiki.Application.Common;
+using CoreWiki.Core.CognitiveServices;
 
 namespace CoreWiki.Pages
 {
@@ -72,7 +73,6 @@ namespace CoreWiki.Pages
 
 		public async Task<IActionResult> OnPostAsync(Comment model)
 		{
-
 			TryValidateModel(model);
 
 			if (!ModelState.IsValid)
@@ -86,7 +86,7 @@ namespace CoreWiki.Pages
 			}
 
 			var commentCmd = _mapper.Map<CreateNewCommentCommand>(model);
-				commentCmd = _mapper.Map(User, commentCmd);
+			commentCmd = _mapper.Map(User, commentCmd);
 
 			await _mediator.Send(commentCmd);
 

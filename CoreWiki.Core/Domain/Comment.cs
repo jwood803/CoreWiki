@@ -20,6 +20,7 @@ namespace CoreWiki.Core.Domain
 
 		public string Content { get; set; }
 
+		public string Sentiment { get; set; }
 	}
 
 }

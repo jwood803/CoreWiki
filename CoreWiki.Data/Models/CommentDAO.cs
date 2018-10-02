@@ -63,6 +63,9 @@ namespace CoreWiki.Data.EntityFramework.Models
 		[DataType(DataType.MultilineText)]
 		public string Content { get; set; }
 
+		[NotMapped]
+		public string Sentiment { get; set; }
+
 		public static CommentDAO FromDomain(Core.Domain.Comment comment)
 		{
 
@@ -92,11 +95,10 @@ namespace CoreWiki.Data.EntityFramework.Models
 				Email = Email,
 				Id = Id,
 				ArticleId = this.Article.Id,
-				Submitted = Submitted
-
+				Submitted = Submitted,
+				Sentiment = Sentiment
 			};
 
 		}
-
 	}
 }

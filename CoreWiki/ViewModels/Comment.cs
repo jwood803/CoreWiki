@@ -11,6 +11,7 @@ namespace CoreWiki.ViewModels
 		public string DisplayName { get; set; }
 		public string Content { get; set; }
 		public Instant Submitted { get; set; }
+		public string Sentiment { get; set; }
 
 	}
 }

@@ -12,7 +12,8 @@ namespace CoreWiki.Application.Articles.Reading
 		{
 			CreateMap<Comment, CommentDto>();
 			CreateMap<CreateCommentDto, Comment>()
-				.ForMember(d => d.Id, m => m.Ignore());
+				.ForMember(d => d.Id, m => m.Ignore())
+				.ForMember(d => d.Sentiment, opts => opts.MapFrom(o => "Neutral"));
 			CreateMap<CreateNewCommentCommand, CreateCommentDto>();
 			CreateMap<Article, ArticleReadingDto>();
 			CreateMap<SlugHistory, SlugHistoryDto>()
@@ -20,7 +21,8 @@ namespace CoreWiki.Application.Articles.Reading
 				.ForMember(d => d.Content, m => m.MapFrom(s => s.Article.Content))
 				.ForMember(d => d.AuthorName, m => m.MapFrom(s => s.Article.AuthorName))
 				.ForMember(d => d.Published, m => m.MapFrom(s => s.Article.Published));
-			CreateMap<CommentDto, Comment>();
+			CreateMap<CommentDto, Comment>()
+				.ForMember(d => d.Sentiment, opts => opts.MapFrom(o => "Neutral"));
 		}
 	}
 }
